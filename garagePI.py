@@ -7,6 +7,7 @@ app = Flask(__name__)
 #setup pins
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
+GPIO.output(18, True)
 
 @app.route('/')
 def root():
@@ -25,9 +26,9 @@ def pin_false():
 @app.route('/garage')
 def garage():
     GPIO.output(18, False)
-    time.sleep(2)
+    time.sleep(1)
     GPIO.output(18, True)
-    return 'Open'
+    return 'OPEN ALL THE DOORS\n'
 
 @app.route('/cleanup')
 def pin_cleanup():
